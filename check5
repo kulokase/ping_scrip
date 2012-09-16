@@ -1,6 +1,6 @@
 #!/bin/bash
 #Usage: scriopt <dst File path>
-#Example: script1 ~/CDPA/ 
+#Example: script1 ~/Ping/ 
 #checking files(ping-data)will save in $TargetPath
 #There is an out file $LogFileName per day.
 
