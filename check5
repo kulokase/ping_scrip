@@ -2,15 +2,16 @@
 #Usage: scriopt <dst File path>
 #Example: script1 ~/CDPA/ 140.117.178.59
 #checking files(ping-data)will save in $TargetPath
+#There is an out file $LogFileName per day.
 
 Time=$(date '+%Y-%m-%d_%k:%M')
-#Hour=$(date '+%k')
-Hour=14
+Hour=$(date '+%k')
 Minut=$(date '+%M')
 TargetPath=$1
+LogFileName=$(date '+log_%Y-%m-%d')
 
 #Count the range of 5 minuts in an hour
-#Example: 0-4 = 0, 5-9 = 1, 10-14 = 2 ..., 55-59 = 11
+#Example: 0-4=0, 5-9=1, 10-14=2, ...55-59=11
 Counter=$Minut
 let Counter/=5
 #echo $Counter
@@ -71,24 +72,23 @@ case $Counter in
 	echo "error in \$Counter"
 ;;
 esac
-echo $Counter
-echo $regex2
-echo "---------------"
+#echo $Counter
+#echo $regex2
+#echo "---------------"
 
 cd $TargetPath
-
-#Files=``
-#echo $Files
-#echo "----------------"
 
 for file in *
 do
 #	echo ${file}
 #	echo "$regex"
 	if [[ ${file} =~ $regex2 ]]; then
-		echo "Match file"
-		cat $file >> tmp
+#		echo "Match file"
+#print the time into log file
+		echo $file >> "$LogFileName"
+#print the ping-data answer into log file
+		cat $file | tail -2 | head -1 | awk '{if($1 != $4){print $0,"\n ----------"} else {print "OK\n ----------"}}' >> "$LogFileName"
 	else
-		echo "Doesn't match"
+		echo "$file :Doesn't match file"
 	fi
 done
