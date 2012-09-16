@@ -1,0 +1,28 @@
+#!/bin/bash
+#Usage: scriopt <File path>
+#Example: script1 ~/CDPA/ping/
+Time=$(date '+%Y-%m-%d_%k:%M')
+TargetPath=$1
+DataFolder="PingData"
+FileName="ping_$Time"
+echo $Time
+echo $TargetPath
+echo $DataFolder
+echo $FileName
+
+regex="(ping_[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{1,2}\:[0-9]{1,2})"
+echo $regex
+
+cd $TargetPath
+if [ -d $DataFolder ]; then 
+	cd $DataFolder
+else
+	mkdir $DataFolder 
+	cd $DataFolder
+fi
+#mkdir $DataFolder
+#cd $DataFolder
+
+#echo "" > "$FILENAME"
+date '+TIME: %Y/%m/%d-%k:%M' > "$FileName"
+#ping -c 5 140.117.178.253 >> "$FILENAME"
