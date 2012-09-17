@@ -1,0 +1,21 @@
+#Author: kulokase
+#Time: 2012-09-17
+
+#*	*	*	*	*	command to be executed
+#-	-	-	-	-
+#|	|	|	|	|
+#|	|	|	|	+----- day of week (0 - 6) (Sunday=0)
+#|	|	|	+------------- month (1 - 12)
+#|	|	+--------------------- day of month (1 - 31)
+#|	+----------------------------- hour (0 - 23)
+#+------------------------------------ min (0 - 59)
+#
+#*/1    *    *    *    *    <scrip1> <TargetFile> <dstIP>
+#*/5    *    *    *    *    <check5> <PingDataFile>
+#
+#
+#Example:
+#*/1    *    *    *    *    /root/Ping/scrip1 /root/Ping 140.117.178.254
+#*/5    *    *    *    *    /root/Ping/check5 /root/Ping/PingData_140.117.178.254
+
+

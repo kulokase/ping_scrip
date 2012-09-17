@@ -1,11 +1,16 @@
 #!/bin/bash
+
+#Author: kulokase
+#Time: 2012-09-17
+
 #Usage: scriopt <dst File path> <dst IP>
 #Example: script1 ~/Ping/ 140.117.178.59
 #ping data will save in $TargetPath/$DataFolder/$FileName
 #Note: please run in background
 Time=$(date '+%Y-%m-%d_%k:%M')
 TargetPath=$1
-DataFolder="PingData"
+DstIP=$2
+DataFolder="PingData_$2"
 FileName="ping_$Time"
 #echo $Time
 #echo $TargetPath
