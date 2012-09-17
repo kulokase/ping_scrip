@@ -9,21 +9,18 @@
 #There is an out file $LogFileName per day.
 
 Time=$(date '+%Y-%m-%d_%k:%M')
-#Hour=$(date '+%k')
-Hour=13
+Hour=$(date '+%k')
 Minut=$(date '+%M')
 TargetPath=$1
 LogFileName=$(date '+log_%Y-%m-%d')
 
 #Count the range of 5 minuts in an hour
 #Example: 0-4=0, 5-9=1, 10-14=2, ...55-59=11
-
-#Counter=$Minut
-#let Counter/=5
-Counter=11
+Counter=$Minut
+let Counter/=5
 
 #echo $Counter
-#echo "-----------------"
+#echo "----------"
 
 #test for count
 #for i in `seq 0 59`;
@@ -37,6 +34,7 @@ Counter=11
 regex_day="([0-9]{4}-[0-9]{2}-[0-9]{2})"
 regex="(ping_$regex_day\_[0-9]{1,2}\:[0-9]{1,2})"
 #echo $regex
+#echo "----------"
 
 #reguler expression for "find" command to find ping-data
 case $Counter in
@@ -82,7 +80,7 @@ case $Counter in
 esac
 #echo $Counter
 #echo $regex2
-#echo "---------------"
+#echo "----------"
 
 cd $TargetPath
 
